@@ -1,7 +1,7 @@
-{
-  /* let mapToken =  mapToken;
+// {
+/* let mapToken =  mapToken;
   console.log(mapToken) */
-}
+// }
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
   container: "map", // container ID
@@ -17,3 +17,6 @@ const marker1 = new mapboxgl.Marker({ color: "red" })
     )
   )
   .addTo(map);
+
+map.addControl(new mapboxgl.ScaleControl());
+map.addControl(new mapboxgl.NavigationControl());
