@@ -40,6 +40,9 @@ To run tests, run the following command
   nodemon app.js
 ```
 
+## Installation Instructions
+
+When installing this project, ensure you **comment out the online MongoDB alter code** and **uncomment the standard MongoDB code** in the configuration. This step is **important** for proper functionality.
 
 ## Run Locally
 
