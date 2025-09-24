@@ -108,7 +108,7 @@ body {
 
 /* Show page */
 .show-img {
-  height: 30vh;
+  height: 50vh;
 }
 
 .btns {
@@ -129,5 +129,5 @@ footer {
 /* Map */
 #map {
   height: 400px;
-  width: 80vh;
+  width: 100%;
 }
