@@ -14,6 +14,7 @@ body {
 .navbar {
   height: 5rem;
   background-color: white;
+  z-index: 1030 !important;
 }
 
 .fa-compass {
@@ -130,4 +131,12 @@ footer {
 #map {
   height: 400px;
   width: 100%;
+}
+
+/* Center form For Singup */
+.center-form {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }

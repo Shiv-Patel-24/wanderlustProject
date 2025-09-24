@@ -1,11 +1,6 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
 <body>
-  <!-- <h3>All Listings</h3> -->
-  <!-- <form action="/listings/new" method="GET">
-        <button>Create New Listing</button>
-    </form> -->
-
   <style>
     #filters {
       display: flex;
@@ -29,11 +24,11 @@
       font-size: 0.8rem;
     }
 
-    .tax-info{
-       display: none;
+    .tax-info {
+      display: none;
     }
 
-    .tax-toggle{
+    .tax-toggle {
       border: 1px solid black;
       border-radius: 1rem;
       height: 3.25rem;
@@ -41,6 +36,10 @@
       margin-left: 2rem;
       display: flex;
       align-items: center;
+    }
+
+    .hidden-filter {
+        display: none;
     }
   </style>
 
@@ -61,37 +60,43 @@
       <div><i class="fa-solid fa-mountain"></i></div>
       <p>Mountains</p>
     </div>
-    <div class="filter">
+
+    <div class="filter hidden-filter">
       <div><i class="fa-brands fa-fort-awesome"></i></div>
       <p>Castles</p>
     </div>
-    <div class="filter">
+    <div class="filter hidden-filter">
       <div><i class="fa-solid fa-person-swimming"></i></div>
       <p>Amazing Pools</p>
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-bed"></i></div>
+    <div class="filter hidden-filter">
+      <div><i class="fa-solid fa-campground"></i></div>
       <p>Camping</p>
     </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-campground"></i></div>
+    <div class="filter hidden-filter">
+      <div><i class="fa-solid fa-bed"></i></div>
       <p>Room</p>
     </div>
-    <div class="filter">
+    <div class="filter hidden-filter">
       <div><i class="fa-solid fa-cow"></i></div>
       <p>Farms</p>
     </div>
-    <div class="filter">
+    <div class="filter hidden-filter">
       <div><i class="fa-regular fa-snowflake"></i></div>
       <p>Arctic</p>
     </div>
-    <div class="filter">
+    <div class="filter hidden-filter">
       <div><i class="fa-solid fa-igloo"></i></div>
       <p>Domes</p>
     </div>
-    <div class="filter">
+    <div class="filter hidden-filter">
       <div><i class="fa-solid fa-ship"></i></div>
       <p>Boats</p>
+    </div>
+
+    <div class="filter" id="more-filters-btn">
+        <div><i class="fa-solid fa-chevron-down"></i></div>
+        <p>More</p>
     </div>
 
     <div class="tax-toggle">
@@ -110,7 +115,6 @@
   </div>
 
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-    <!-- "used bootstrap search this currently i have understaned but check again" class row automatically convert colums to row  -->
     <% for(let listings of allListings) { %>
     <a href="/listings/<%= listings._id %>" class="listing-link">
       <div class="card col listing-card">
@@ -129,28 +133,30 @@
           </p>
         </div>
       </div>
-      <% } %>
     </a>
+    <% } %>
   </div>
-
-  <!-- <ul>
-        <% for (let listings of allListings){ %>
-            <li> <a href="/listings/<%= listings._id %>"><%= listings.title %>  </a>  </li>
-        <%} %>
-    </ul> -->
 </body>
 
 <script>
   let taxSwitch = document.getElementById("switchCheckDefault");
   taxSwitch.addEventListener("click", () => {
     let taxInfo = document.getElementsByClassName("tax-info");
-    // console.log(taxInfo)
-    for(info of taxInfo){
-      if(info.style.display != "inline"){
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
         info.style.display = "inline";
-      }else{
+      } else {
         info.style.display = "none";
       }
     }
+  });
+
+  const moreFiltersBtn = document.getElementById("more-filters-btn");
+  moreFiltersBtn.addEventListener("click", () => {
+    const hiddenFilters = document.querySelectorAll(".hidden-filter");
+    hiddenFilters.forEach((filter) => {
+      filter.style.display = "block";
+    });
+    moreFiltersBtn.style.display = "none"; 
   });
 </script>
