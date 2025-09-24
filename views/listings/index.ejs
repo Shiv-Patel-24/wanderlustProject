@@ -39,7 +39,17 @@
     }
 
     .hidden-filter {
-        display: none;
+      display: none;
+    }
+    
+    /* Add this media query for larger screens */
+    @media (min-width: 768px) {
+      .hidden-filter {
+        display: block; /* Show all filters */
+      }
+      #more-filters-btn {
+        display: none; /* Hide the "More" button */
+      }
     }
   </style>
 
@@ -95,8 +105,8 @@
     </div>
 
     <div class="filter" id="more-filters-btn">
-        <div><i class="fa-solid fa-chevron-down"></i></div>
-        <p>More</p>
+      <div><i class="fa-solid fa-chevron-down"></i></div>
+      <p>More</p>
     </div>
 
     <div class="tax-toggle">
@@ -139,6 +149,7 @@
 </body>
 
 <script>
+  // Script for the tax toggle
   let taxSwitch = document.getElementById("switchCheckDefault");
   taxSwitch.addEventListener("click", () => {
     let taxInfo = document.getElementsByClassName("tax-info");
@@ -151,12 +162,13 @@
     }
   });
 
+  // Script for the "More" button
   const moreFiltersBtn = document.getElementById("more-filters-btn");
   moreFiltersBtn.addEventListener("click", () => {
     const hiddenFilters = document.querySelectorAll(".hidden-filter");
     hiddenFilters.forEach((filter) => {
       filter.style.display = "block";
     });
-    moreFiltersBtn.style.display = "none"; 
+    moreFiltersBtn.style.display = "none"; // Hide the "More" button after click
   });
 </script>
